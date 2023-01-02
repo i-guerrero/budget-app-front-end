@@ -1,16 +1,16 @@
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+// import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 
 export default function NavBar() {
     return (
         <Navbar bg="light" expand="lg">
           <Container>
-            <Navbar.Brand href="/">Budget App</Navbar.Brand>
+            <Navbar.Brand href="/transactions">Budget App</Navbar.Brand>
             <Button variant="primary" href="/transactions/new">New Transaction</Button>{' '}
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
@@ -27,7 +27,7 @@ export default function NavBar() {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-            </Navbar.Collapse>
+            </Navbar.Collapse> */}
           </Container>
         </Navbar>
       );

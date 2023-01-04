@@ -2,7 +2,8 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import TransactionsIndex from "./Pages/TransactionsIndex";
+import Index from "./Pages/Index";
+import New from "./Pages/New";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/transactions" element={<TransactionsIndex />} />
+          <Route path="/transactions" element={<Index />} />
+          <Route path="/transactions/new" element={<New />} />
         </Routes>
       </Router>
     </div>

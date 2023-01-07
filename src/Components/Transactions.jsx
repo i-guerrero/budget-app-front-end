@@ -27,7 +27,7 @@ export default function Transactions() {
 
   return (
     <div>
-      <h2>Bank Account Total: <span id={accountTotal > 100 ? "green" : "red"}>${accountTotal}</span></h2>
+      <h2>Bank Account Total: <span id={accountTotal > 1000 ? "green" : accountTotal >= 0 ? "black" : "red"}>${accountTotal}</span></h2>
       <h3>Transactions</h3>
       <Table striped bordered hover>
       <thead>

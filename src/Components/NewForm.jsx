@@ -2,9 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
-// const API = process.env.REACT_APP_API_URL
+const API = process.env.REACT_APP_API_URL
 
 export default function NewForm() {
     const [transaction, setTransaction] = useState({
@@ -29,14 +29,20 @@ export default function NewForm() {
     //     })
     // }
 
-    // function handleSubmit() {
-    //     axios.post(`${API}/transactions`, transaction)
-    // }
+    function handleSubmit(e) {
+        e.preventDefault()
+        axios.post(`${API}/transactions`, transaction)
+        .then((response) => {
+            setTransaction(response.data);
+            // travel to show page
+        })
+        .catch((error) => console.log(error))
+    }
 
   return (
     <div>
         <Container>
-            <Form>
+            <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="date">
                 <Form.Label>Date</Form.Label>
                 <Form.Control type="date" value={transaction.date} onChange={handleTextChange} />

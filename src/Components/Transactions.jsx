@@ -20,7 +20,7 @@ export default function Transactions() {
 
   useEffect(() => {
     let total = transactions.length > 0 ? transactions.reduce((sum, transaction) => {
-      return sum + transaction.amount
+      return sum + Number(transaction.amount)
     }, 0) : 0;
     setAccountTotal(total)
   }, [transactions])

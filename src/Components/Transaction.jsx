@@ -5,7 +5,7 @@ export default function Transaction({ transaction, i}) {
     <tr>
       <td>{i}</td>
         <td>{transaction.date}</td>
-        <td>{transaction.item_name}</td>
+        <td>{transaction.name}</td>
         <td>${transaction.amount}</td>
     </tr>
   )

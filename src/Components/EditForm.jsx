@@ -1,13 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL
 
-export default function NewForm() {
+export default function EditForm() {
     const [transaction, setTransaction] = useState({
         date: "",
         name: "",
@@ -16,7 +16,15 @@ export default function NewForm() {
         category: "",
     })
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    useEffect(() => {
+        axios.get(`${API}/transactions/${id}`)
+        .then((response) => {
+            setTransaction(response.data)
+        })
+    }, [id])
 
     function handleTextChange(e) {
         setTransaction({
@@ -25,14 +33,20 @@ export default function NewForm() {
         })
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        axios.post(`${API}/transactions`, transaction)
+    function updateTransaction() {
+        axios.put(`${API}/transactions/${id}`, transaction)
         .then((response) => {
             setTransaction(response.data);
-            navigate(`/transactions`)
+            navigate(`/transactions/${id}`);
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+ 
+    function handleSubmit(e) {
+        e.preventDefault();
+        updateTransaction();
     }
 
   return (

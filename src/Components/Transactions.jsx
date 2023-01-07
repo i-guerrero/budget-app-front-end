@@ -36,6 +36,7 @@ export default function Transactions() {
           <th>Date</th>
           <th>Name</th>
           <th>Amount</th>
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody>

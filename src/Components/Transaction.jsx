@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom"
+import Button from "react-bootstrap/Button";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+const API = process.env.REACT_APP_API_URL;
 
 export default function Transaction({ transaction, i}) {
+    const navigate = useNavigate();
+    
+    function handleDelete() {
+        axios.delete(`${API}/transactions/${i}`)
+        .then(() => {
+            navigate(`/transactions`);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+      }
+
   return (
     <tr>
       <td>{i}</td>
@@ -9,7 +26,8 @@ export default function Transaction({ transaction, i}) {
         <td>${transaction.amount}</td>
         <td>
         <Link to={`/transactions/${i}/edit`}>✏️</Link>
-      </td>
+        </td>
+        <td><Button variant="light" onClick={handleDelete}>🗑</Button></td>
     </tr>
   )
 }

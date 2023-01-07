@@ -28,6 +28,16 @@ export default function TransactionDetails() {
       });
   }, [id]);
 
+  function handleDelete() {
+    axios.delete(`${API}/transactions/${id}`)
+    .then(() => {
+        navigate(`/transactions`);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+  }
+
   return (
     <div>
         <article>
@@ -41,7 +51,7 @@ export default function TransactionDetails() {
             </ul>
             <Button variant="secondary" onClick={() => navigate(`/transactions`)}>Back</Button>
             <Button variant="secondary" onClick={() => navigate(`/transactions/${id}/edit`)}>Edit</Button>
-            <Button variant="secondary" onClick={() => navigate(`/transactions`)}>Delete</Button>
+            <Button variant="secondary" onClick={handleDelete}>Delete</Button>
         </article>
     </div>
   );

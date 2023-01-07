@@ -16,7 +16,7 @@ export default function Transactions() {
         setTransactions(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [transactions]);
 
   useEffect(() => {
     let total = transactions.length > 0 ? transactions.reduce((sum, transaction) => {
@@ -37,6 +37,7 @@ export default function Transactions() {
           <th>Name</th>
           <th>Amount</th>
           <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
